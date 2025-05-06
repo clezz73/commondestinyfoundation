@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Destiny Foundation | Sustainable Development</title>
+    <style>
+        :root {
+            --primary-dark: #013220; /* Dark green */
+            --primary-light: #ffffff; /* White */
+            --accent: #2E8B57; /* Sea green for accents */
+            --text-dark: #333333;
+            --text-light: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-dark);
+            color: var(--primary-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(1, 50, 32, 0.8), rgba(1, 50, 32, 0.8)), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--primary-light);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary-light);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3CB371;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 0.5rem auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .mission-vision {
+            background-color: var(--primary-dark);
+            color: var(--primary-light);
+            padding: 4rem 0;
+        }
+        
+        .mv-container {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .mv-box {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .mv-box h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .objectives {
+            background-color: #f9f9f9;
+        }
+        
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .objective-card {
+            background-color: var(--primary-light);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent);
+        }
+        
+        .objective-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .approach {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta {
+            background: linear-gradient(rgba(1, 50, 32, 0.9), rgba(1, 50, 32, 0.9)), 
+                        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40') no-repeat center center/cover;
+            color: var(--primary-light);
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--primary-light);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col ul li a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--primary-light);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content, .mv-container {
+                flex-direction: column;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Common<span>Destiny</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#mission">Mission & Vision</a></li>
+                    <li><a href="#objectives">Our Work</a></li>
+                    <li><a href="#approach">Approach</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Building a Sustainable Future Together</h1>
+            <p>Empowering communities through education, environmental stewardship, and economic development for a shared destiny.</p>
+            <a href="#get-involved" class="btn">Get Involved</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>The Common Destiny Foundation is a non-profit organization dedicated to fostering holistic, sustainable development across communities through strategic interventions in education, environmental stewardship, energy access, economic empowerment, and social equity.</p>
+                    <p>We are driven by the belief that every individual, regardless of background or circumstance, deserves the opportunity to live a dignified, healthy, and empowered life.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57" alt="Community gathering">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mission" class="mission-vision">
+        <div class="container mv-container">
+            <div class="mv-box">
+                <h3>Our Vision</h3>
+                <p>A world where communities thrive in harmony with nature, empowered by knowledge, equity, and opportunity.</p>
+            </div>
+            <div class="mv-box">
+                <h3>Our Mission</h3>
+                <p>To catalyze inclusive and sustainable development by providing education and skills training, protecting the environment, enhancing access to clean energy and water, promoting health and nutrition, and empowering individuals economically and socially.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="objectives" class="objectives">
+        <div class="container">
+            <h2 class="section-title">Our Core Objectives</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <h3>Education and Skills Training</h3>
+                    <p>We develop accessible educational programs and vocational training to equip individuals with knowledge and practical skills for meaningful employment.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Environmental Conservation</h3>
+                    <p>Committed to safeguarding natural ecosystems through reforestation, waste management, and biodiversity preservation initiatives.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Clean Energy Access</h3>
+                    <p>We work to increase access to renewable and affordable energy solutions in underserved communities.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Economic Empowerment</h3>
+                    <p>Through entrepreneurship training and financial literacy, we help communities become economically self-reliant.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Health and Nutrition</h3>
+                    <p>Our health initiatives aim to improve access to primary healthcare services and nutrition education.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Clean Water Access</h3>
+                    <p>We strive to ensure reliable access to safe drinking water and hygienic sanitation facilities.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Sustainable Housing</h3>
+                    <p>We support development of durable, affordable, and environmentally sustainable housing.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Sustainable Agriculture</h3>
+                    <p>We promote climate-smart agriculture and food security in rural areas.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Community Support</h3>
+                    <p>We engage faith-based and community institutions to foster social cohesion and moral leadership.</p>
+                </div>
+                <div class="objective-card">
+                    <h3>Gender Equality</h3>
+                    <p>We advocate for the rights and empowerment of women and girls through equal opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="approach" class="approach">
+        <div class="container">
+            <h2 class="section-title">Our Approach</h2>
+            <p>We employ a participatory, community-centered approach that fosters ownership and sustainability. Collaboration with local stakeholders, governments, and international partners is central to our work, ensuring relevance, effectiveness, and long-term impact.</p>
+        </div>
+    </section>
+
+    <section id="get-involved" class="cta">
+        <div class="container">
+            <h2>Get Involved</h2>
+            <p>Join us in shaping a shared and sustainable destiny. Whether as a partner, volunteer, or donor, your contribution makes a lasting difference.</p>
+            <a href="#contact" class="btn">Contact Us</a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Common Destiny</h3>
+                    <p>Building sustainable communities through holistic development initiatives.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#mission">Mission & Vision</a></li>
+                        <li><a href="#objectives">Our Work</a></li>
+                        <li><a href="#approach">Our Approach</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="#">Donate</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Foundation Street</li>
+                        <li>Community City, CD 10001</li>
+                        <li>info@commondestiny.org</li>
+                        <li>+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Common Destiny Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons (would need to be linked in a real implementation) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>
